@@ -50,7 +50,7 @@ node {
                         throw e
                         }
                        
-            echo("************************** Test Result Uploaded Successful to Velocity****************************")
+         echo("************************** Test Result Uploaded Successful to Velocity****************************")
 	
 	//stage('SonarQube Analysis'){
 	//	def mvnHome = tool name : 'Maven3.6.0', type:'maven'
