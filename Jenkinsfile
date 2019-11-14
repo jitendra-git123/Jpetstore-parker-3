@@ -111,14 +111,14 @@ echo "(*******)"
 	  def newComponentVersionId = "${JPetStorevelocityComponent_VersionId}"
 	  echo "git commit ${GIT_COMMIT}"
 	  //step($class: 'UploadBuild', tenantId: "5ade13625558f2c6688d15ce", revision: "${GIT_COMMIT}", appName: "Altoro", requestor: "admin", id: "${newComponentVersionId}" )
- //step($class: 'UploadBuild', 
-   //    tenantId: "5ade13625558f2c6688d15ce", 
-     //  revision: "${GIT_COMMIT}", 
-       //appName: "JPetStore-velocity", 
-       //requestor: "admin", 
-       //id: "${newComponentVersionId}", 
-       //versionName: "2.0.${BUILD_NUMBER}"
-      //)
+ step($class: 'UploadBuild', 
+       tenantId: "5ade13625558f2c6688d15ce", 
+       revision: "${GIT_COMMIT}", 
+       appName: "JPetStore-velocity", 
+       requestor: "admin", 
+       id: "${newComponentVersionId}", 
+       versionName: "2.0.${BUILD_NUMBER}"
+      )
      
 	//echo "Demo123 ${newComponentVersionId}"
 	//sleep 25
@@ -133,6 +133,24 @@ echo "(*******)"
 			 deployReqProps: '', 
 			 deployVersions: "JPetStorevelocityComponent:2.0.${BUILD_NUMBER}"], 
 		siteName: 'UCD_Local'])
+	  
+	  step([
+                    $class: 'UploadDeployment',
+                    debug: true,
+                    name: 'Deploy',
+                    appName: 'UCV',
+                    description: "${version}-${env.BUILD_ID} to ${envName}",
+                    startTime: "${currentBuild.startTimeInMillis}",
+                    endTime: "${System.currentTimeMillis()}",
+                    environmentId: "19e805ce-c40a-487e-bfdb-5b06abff4b2d",
+                    environmentName: "DEV",
+                    initiator: "${username}",
+                    result: "${status}",
+                    tenantId: "5ade13625558f2c6688d15ce",
+                    type: 'Jenkins',
+                    versionExtId: "${newComponentVersionId}",
+                    versionName: "2.0.${BUILD_NUMBER}"
+                ])
 
  }
 	
