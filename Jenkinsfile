@@ -1,6 +1,7 @@
 node {
         def majorVersion="2.0.${BUILD_NUMBER}"
 	currentBuild.displayName = majorVersion
+	def status
 
 	//currentBuild.displayName = "2.0.${BUILD_NUMBER}"
 	def GIT_COMMIT
@@ -145,7 +146,7 @@ echo "(*******)"
                     environmentId: "19e805ce-c40a-487e-bfdb-5b06abff4b2d",
                     environmentName: "DEV",
                     //initiator: "${username}",
-                    //result: "${status}",
+                    result: "${status}",
                     tenantId: "5ade13625558f2c6688d15ce",
                     type: 'Jenkins',
                     versionExtId: "${majorVersion}",
