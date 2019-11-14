@@ -134,6 +134,23 @@ echo "(*******)"
 			 deployVersions: "JPetStorevelocityComponent:2.0.${BUILD_NUMBER}"], 
 		siteName: 'UCD_Local'])
  }
+	step([
+                    $class: 'UploadDeployment',
+                    debug: true,
+                    name: 'Deploy Internal Docker Compose',
+                    appName: 'JPetStore-velocity',
+                    description: "${majorVersion} to DEV",
+                    startTime: "${currentBuild.startTimeInMillis}",
+                    endTime: "${System.currentTimeMillis()}",
+                    environmentId: "19e805ce-c40a-487e-bfdb-5b06abff4b2d",
+                    environmentName: "DEV",
+                    initiator: "${username}",
+                    result: "${status}",
+                    tenantId: "5ade13625558f2c6688d15ce",
+                    type: 'Jenkins',
+                    versionExtId: "${majorVersion}",
+                    versionName: "${majorVersion}"
+                ])
 	
 stage ('wait for deploy') {
 	sleep 25
