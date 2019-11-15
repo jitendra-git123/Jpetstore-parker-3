@@ -145,7 +145,7 @@ echo "(*******)"
                     environmentId: "19e805ce-c40a-487e-bfdb-5b06abff4b2d",
                     environmentName: "DEV",
                     //initiator: "${username}",
-                    //result: "${status}",
+                    result: 'success,
                     tenantId: "5ade13625558f2c6688d15ce",
                     type: 'Jenkins',
                     versionExtId: "${majorVersion}",
